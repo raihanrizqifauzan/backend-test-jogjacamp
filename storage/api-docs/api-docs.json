@@ -1,0 +1,393 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Klinik API",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/appointment": {
+            "post": {
+                "tags": [
+                    "Appointment"
+                ],
+                "summary": "Create a new appointment",
+                "operationId": "921c57c08f6528291820db2188840440",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "patient_id",
+                                    "diagnose_id"
+                                ],
+                                "properties": {
+                                    "patient_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "diagnose_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Appointment created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Appointment"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/api/appointment/{id}": {
+            "get": {
+                "tags": [
+                    "Appointment"
+                ],
+                "summary": "Get an appointment by ID",
+                "operationId": "75fddb97d8ab9c30012947c604e2556b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get appointment details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Appointment"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Appointment not found"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Appointment"
+                ],
+                "summary": "Update an appointment by ID",
+                "operationId": "085687dc3518a70e102488444d132aee",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "status"
+                                ],
+                                "properties": {
+                                    "status": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Appointment updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Appointment"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Appointment not found"
+                    }
+                }
+            }
+        },
+        "/api/diagnose": {
+            "post": {
+                "tags": [
+                    "Diagnose"
+                ],
+                "summary": "Create a new diagnose",
+                "operationId": "8d3ba9f3c456eb1037e81e510473b652",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Ringan"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Diagnose created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Diagnose"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/api/patient": {
+            "post": {
+                "tags": [
+                    "Patient"
+                ],
+                "summary": "Create a new patient",
+                "operationId": "04eef8224e8006ad4eed2aabf86754fa",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "John Doe"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Patient created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Patient"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/api/service": {
+            "post": {
+                "tags": [
+                    "Service"
+                ],
+                "summary": "Create a new service",
+                "operationId": "2e19439c5b005b48a931cedecc638752",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Obat"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Service created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Service"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Appointment": {
+                "title": "Appointment",
+                "description": "Appointment model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID of the appointment",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "patient_id": {
+                        "title": "Patient ID",
+                        "description": "ID of the patient",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "diagnose_id": {
+                        "title": "Diagnose ID",
+                        "description": "ID of the diagnose",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "status": {
+                        "title": "Status",
+                        "description": "Status of the appointment (0 = ongoing, 1 = completed)",
+                        "type": "integer",
+                        "example": 0
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Appointment"
+                }
+            },
+            "Diagnose": {
+                "title": "Diagnose",
+                "description": "Diagnose model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID of the diagnose",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "Name",
+                        "description": "Name of the diagnose",
+                        "type": "string",
+                        "example": "Ringan"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Diagnose"
+                }
+            },
+            "Patient": {
+                "title": "Patient",
+                "description": "Patient model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID of the patient",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "Name",
+                        "description": "Name of the patient",
+                        "type": "string",
+                        "example": "John Doe"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Patient"
+                }
+            },
+            "Service": {
+                "title": "Service",
+                "description": "Service model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID of the service",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "Name",
+                        "description": "Name of the service",
+                        "type": "string",
+                        "example": "Obat"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Service"
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Appointment",
+            "description": "Appointment"
+        },
+        {
+            "name": "Diagnose",
+            "description": "Diagnose"
+        },
+        {
+            "name": "Patient",
+            "description": "Patient"
+        },
+        {
+            "name": "Service",
+            "description": "Service"
+        }
+    ]
+}
